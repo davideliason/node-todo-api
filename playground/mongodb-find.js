@@ -15,12 +15,21 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     const db = client.db("TodoApp");
 
 
-    db.collection('Todos').find({
-        completed: false
-    }).toArray()
-        .then((docs) => {
-            console.log("Todos");
-            console.log(JSON.stringify(docs, undefined, 2))
+    // db.collection('Todos').find({
+
+    //     _id: new ObjectID('5b4919fb383f5d028cc26b40')
+
+    // }).toArray()
+    //     .then((docs) => {
+    //         console.log("Todos");
+    //         console.log(JSON.stringify(docs, undefined, 2))
+    //     }, (err) => {
+    //         console.log("error retrieving files", err);
+    //     });
+    db.collection('Todos').find().count()
+        .then((count) => {
+            console.log(`Todos count: ${count} `);
+            console.log(JSON.stringify(count, undefined, 2))
         }, (err) => {
             console.log("error retrieving files", err);
         });
