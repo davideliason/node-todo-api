@@ -26,12 +26,21 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     //     }, (err) => {
     //         console.log("error retrieving files", err);
     //     });
-    db.collection('Todos').find().count()
+
+    // create a cursor and use count method on Todos
+    // db.collection('Todos').find().count()
+    //     .then((count) => {
+    //         console.log(`Todos count: ${count} `);
+    //         console.log(JSON.stringify(count, undefined, 2))
+    //     }, (err) => {
+    //         console.log("error retrieving files", err);
+    //     });
+
+    db.collection('Users').find({ name: "Tom" }).count()
         .then((count) => {
-            console.log(`Todos count: ${count} `);
             console.log(JSON.stringify(count, undefined, 2))
         }, (err) => {
-            console.log("error retrieving files", err);
+            console.log("error retrieving files to count");
         });
 
     // db.close();
