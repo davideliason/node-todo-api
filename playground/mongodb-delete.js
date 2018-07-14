@@ -38,17 +38,21 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     // });
 
     // practice solution of removing duplicates
+    // deleteMany()
+
     // db.collection("Users").deleteMany({
     //     name: "Tom"
     // }).then((result) => {
     //     console.log(result);
     // });
 
-    db.collection("Users").findOneAndDelete({
-        _id: new ObjectID('5b49cdbd4d1f0eb3645bead4')
-    }).then((result) => {
-        console.log(result);
-    });
+    // findOneAndDelete by Id
+
+    // db.collection("Users").findOneAndDelete({
+    //     _id: new ObjectID('5b49cdbd4d1f0eb3645bead4')
+    // }).then((result) => {
+    //     console.log(JSON.stringify(result, undefined, 2));
+    // });
 
 
     // db.close();
