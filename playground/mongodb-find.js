@@ -36,9 +36,9 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     //         console.log("error retrieving files", err);
     //     });
 
-    db.collection('Users').find({ name: "Tom" }).count()
-        .then((count) => {
-            console.log(JSON.stringify(count, undefined, 2))
+    db.collection('Users').find({ name: "Tom" }).toArray()
+        .then((docs) => {
+            console.log(JSON.stringify(docs, undefined, 2))
         }, (err) => {
             console.log("error retrieving files to count");
         });
