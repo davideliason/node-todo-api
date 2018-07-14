@@ -19,10 +19,10 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
         _id: new ObjectID("5b49d68b4d1f0eb3645bed4b")
 
     }, {
-        $set: {
-            completed: true
-        }
-        }).then((result) => {
+            $set: {
+                completed: true
+            }
+        }, { returnOrignal: false }).then((result) => {
             if (err) {
                 console.log("unable to find document and delete", err);
             }
