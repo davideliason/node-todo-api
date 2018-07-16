@@ -15,6 +15,8 @@ var Todo = mongoose.model('Todo', {
     }
 });
 
+var Todo2 = mongoose.model('Todo')
+
 var newTodo = new Todo({
     text: "Make coffee"
 });
