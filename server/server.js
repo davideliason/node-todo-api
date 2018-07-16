@@ -3,14 +3,25 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/ToDoApp");
 
-var User = mongoose.model({
+var User = mongoose.model('User', {
     email: {
-        type: string,
+        type: String,
         required: true,
         trim: true,
         minlength: 1
     }
-})
+});
+
+var tom = new User({
+    email: "this@chateau.com"
+});
+
+tom.save().then((doc) => {
+    console.log("new user saved", JSON.stringify(doc, undefined, 2));
+
+}, (e) => {
+    console.log("error", e);
+});
 
 var Todo = mongoose.model('Todo', {
     text: {
@@ -20,7 +31,7 @@ var Todo = mongoose.model('Todo', {
         trim: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
         default: false
     },
     completedAt: {
