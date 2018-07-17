@@ -16,3 +16,10 @@ Todo.findOne({
 }).then((todo) => {
     console.log("Todo", todo);
 });
+
+Todo.findById(id).then((todo) => {
+    if (!todo) {
+        console.log("id not found ")
+    }
+    console.log("Todo by id: ", todo);
+});
