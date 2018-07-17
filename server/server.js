@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/ToDoApp");
+// grabbing the return object from mongoose.js
+var { mongoose } = require('./db/mongoose');
 
 var User = mongoose.model('User', {
     email: {
