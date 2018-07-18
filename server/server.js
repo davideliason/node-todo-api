@@ -1,3 +1,4 @@
+const _ = require('lodash');
 var express = require('express');
 var bodyParser = require('body-parser');
 var { ObjectID } = require('mongodb');
@@ -62,6 +63,35 @@ app.delete('/todos/:id', (req, res) => {
         res.status(200).send(todo);
     }).catch((err) => {
         res.status(404).send();
+    });
+});
+
+app.patch('/todos/:id', (req, res) => {
+    var id = req.params.id;
+    // _.pick will only select the two fields to be attached
+    // to the req.body => body for use
+    var body = _.pick(req.body, ['text', 'completed']);
+    // validate id
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send();
+    }
+    // 'completed'.value (Boolean) ? set timestamp : clear timestamp
+    // is it a boolean && is that boolean === true?
+    if (_.isBoolean(body.completed) && body.completed) {
+        body.completedAt = new Date().getTime();
+    }
+    else {
+        body.completed = false;
+        body.completedAt = null;
+    }
+
+    Todo.findByIdAndUpdate(id, { $set: body }, { new: true }).then((todo) => {
+        if (!todo) {
+            return res.status(404).send();
+        }
+        res.status(200).send({ todo });
+    }).catch((e) => {
+        res.status(400).send();
     });
 });
 
