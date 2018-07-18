@@ -8,12 +8,17 @@ var id = '5b4d23b624f9833770f4f2cf';
 
 User.findById(id).then((user) => {
     if (!user) {
-        return console.log("user not found");
+        console.log("user not found")
     }
     console.log("user :", user);
+}).catch(e) => console.log(e);
+
+Todo.findById(id).then((todo) => {
+    if (!todo) {
+        return console.log('id not found');
+    }
+    console.log("todo by id", todo);
 }).catch((e) => console.log(e));
-
-
 
 
 // query User collection and get an id
