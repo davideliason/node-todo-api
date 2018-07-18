@@ -3,5 +3,11 @@
 
 ## Description
 
-Following a tutorial for building a node.js application connected to mongod to create an API. The tutorial is through a Udemy course titled 'The Complete Node.js Developer Course'.
+Having enrolled in Udemy's 'The Complete Node.js Developer Course', I've followed along in building out a ToDo app while learning and practicing a number of things:
+* Heroku deployment of MongoDB, Express, Node app
+* Promises
+* ES6
+* etc
+
+
 
